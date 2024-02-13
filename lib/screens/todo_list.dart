@@ -10,6 +10,15 @@ class TodoListPage extends StatefulWidget {
 class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Todo List"),
+      ),
+      floatingActionButton: FloatingActionButton.extended(onPressed: (){}, label: const Text("Add Todo")),
+      body: const Text("TodoList"),
+    );
+  }
+  void navigateToAddPage(){
+    
   }
 }
