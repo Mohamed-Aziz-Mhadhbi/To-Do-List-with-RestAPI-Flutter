@@ -1,16 +1,36 @@
-# todolist
+# To Do List App
 
-A new Flutter project.
+ This app created with Flutter, helps users organize tasks they need to complete. Users can add tasks to the list, mark them as completed, edit or delete them as needed.
+
+## Features
+
+- **Add Tasks:** Easily add new tasks to your to-do list.
+- **Mark as Completed:** Check off tasks when you've completed them.
+- **Edit and Delete:** Update or remove tasks as needed.
+- **Responsive Design:** Works seamlessly across different devices.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. **Install Flutter:** If you haven't already, install Flutter.
+2. **Clone the Repository:** Clone this repository to your local machine.
 
-A few resources to get you started if this is your first Flutter project:
+``` 
+git clone https://github.com/Mohamed-Aziz-Mhadhbi/To-Do-List-with-RestAPI-Flutter.git
+ ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Run the App:** Navigate to the project directory and run the app on your preferred device or emulator.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``` 
+cd To-Do-List-with-RestAPI-Flutter
+flutter run
+``` 
+## Screenshots
+
+## Contributing
+
+Contributions are welcome! Feel free to submit bug reports, feature requests, or pull requests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details
+
