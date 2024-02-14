@@ -33,8 +33,7 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       body: Visibility(
         visible: isLoading,
-        replacement:const Center(child: CircularProgressIndicator()),
-        child: RefreshIndicator(
+        replacement: RefreshIndicator(
           onRefresh: fetchTodo,
           child: ListView.builder(
               itemCount: items.length,
@@ -46,9 +45,19 @@ class _TodoListPageState extends State<TodoListPage> {
                   ),
                   title: Text(item['title']),
                   subtitle: Text(item['description']),
+                  trailing: PopupMenuButton(
+                    itemBuilder: (context) {
+                      return [
+                        const PopupMenuItem(
+                          child: Text("Edit"),
+                        ),
+                      ];
+                    },
+                  ),
                 );
               }),
         ),
+        child: const Center(child: CircularProgressIndicator()),
       ),
     );
   }
@@ -67,10 +76,12 @@ class _TodoListPageState extends State<TodoListPage> {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as Map;
       final result = json['items'] as List;
-      setState(() {
-        items = result;
-      });
-    } else {}
+      setState(
+        () {
+          items = result;
+        },
+      );
+    }
     setState(() {
       isLoading = false;
     });
