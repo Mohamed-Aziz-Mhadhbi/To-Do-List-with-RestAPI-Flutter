@@ -90,6 +90,8 @@ class _TodoListPageState extends State<TodoListPage> {
       setState(() {
         items = filtered;
       });
+    } else {
+      showErrorMessage("Deleted Successfully");
     }
   }
 
@@ -109,5 +111,18 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       isLoading = false;
     });
+  }
+
+  void showErrorMessage(String message) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
