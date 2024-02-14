@@ -61,6 +61,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
       headers: {'Content-Type': 'application/json'},
     );
     if (response.statusCode == 201) {
+      titleController.text = "";
+      descriptionController.text = "";
       showSuccesMessage("Creation Success");
     } else {
       showErrorMessage("Creation Failed");
