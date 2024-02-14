@@ -30,13 +30,21 @@ class _TodoListPageState extends State<TodoListPage> {
         onPressed: navigateToAddPage,
         label: const Text("Add Todo"),
       ),
-      body: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return const ListTile(
-              title: Text("Test"),
-            );
-          }),
+      body: RefreshIndicator(
+        onRefresh: fetchTodo,
+        child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final item = items[index] as Map;
+              return ListTile(
+                leading: CircleAvatar(
+                  child: Text("${index + 1}"),
+                ),
+                title: Text(item['title']),
+                subtitle: Text(item['description']),
+              );
+            }),
+      ),
     );
   }
 
