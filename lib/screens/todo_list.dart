@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:todolist/screens/add_page.dart';
 import 'package:http/http.dart' as http;
@@ -10,6 +12,14 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
+  List items = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchTodo();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +27,16 @@ class _TodoListPageState extends State<TodoListPage> {
         title: const Text("Todo List"),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: navigateToAddPage, label: const Text("Add Todo")),
-      body: const Text("TodoList"),
+        onPressed: navigateToAddPage,
+        label: const Text("Add Todo"),
+      ),
+      body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return const ListTile(
+              title: Text("Test"),
+            );
+          }),
     );
   }
 
@@ -34,6 +52,13 @@ class _TodoListPageState extends State<TodoListPage> {
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {
-    } else {}
+      final json = jsonDecode(response.body) as Map;
+      final result = json['items'] as List;
+      setState(() {
+        items = result;
+      });
+    } else {
+      // show error
+    }
   }
 }
