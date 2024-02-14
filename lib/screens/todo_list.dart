@@ -91,7 +91,7 @@ class _TodoListPageState extends State<TodoListPage> {
         items = filtered;
       });
     } else {
-      showErrorMessage("Deleted Successfully");
+      showErrorMessage("Unable to delete");
     }
   }
 
