@@ -50,12 +50,18 @@ class _AddTodoPageState extends State<AddTodoPage> {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-              onPressed: submitData, child: Text(isEdit ? "Edit" : "Submit"))
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+                onPressed: isEdit ? updateData : submitData,
+                child: Text(isEdit ? "Edit" : "Submit")),
+          )
         ],
       ),
     );
   }
+
+  Future<void> updateData() async {}
 
   Future<void> submitData() async {
     final title = titleController.text;
