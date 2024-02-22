@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AddTodoPage extends StatefulWidget {
-  final Map? todo;
-  const AddTodoPage({super.key, this.todo});
+  final Map<dynamic, dynamic>? todo;
+
+  const AddTodoPage({Key? key, this.todo}) : super(key: key);
 
   @override
   State<AddTodoPage> createState() => _AddTodoPageState();
@@ -33,7 +33,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEdit ? "Edit Todo" : "Add Todo"),
+        title: Text(
+          isEdit ? "Edit Todo" : "Add Todo",
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
