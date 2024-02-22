@@ -49,6 +49,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   trailing: PopupMenuButton(
                     onSelected: (value) {
                       if (value == "edit") {
+                        navigateToEditPage();
                       } else if (value == 'delete') {
                         deletebyId(id);
                       }
