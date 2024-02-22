@@ -68,7 +68,33 @@ class _AddTodoPageState extends State<AddTodoPage> {
     );
   }
 
-  Future<void> updateData() async {}
+  Future<void> updateData() async {
+    final todo = widget.todo;
+    if (todo == null) {
+      return;
+    }
+    final id = todo['_id'];
+    final isCompleted = todo["is_completed"];
+    final title = titleController.text;
+    final description = descriptionController.text;
+    final body = {
+      "title": title,
+      "description": description,
+      "is_completed": isCompleted,
+    };
+    final url = "https://api.nstack.in/v1/todos/$id";
+    final uri = Uri.parse(url);
+    final response = await http.put(
+      uri,
+      body: jsonEncode(body),
+      headers: {'Content-Type': 'application/json'},
+    );
+    if (response.statusCode == 200) {
+      showSuccesMessage("Update Success");
+    } else {
+      showErrorMessage("Update Failed");
+    }
+  }
 
   Future<void> submitData() async {
     final title = titleController.text;
@@ -76,7 +102,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final body = {
       "title": title,
       "description": description,
-      "is_comleted": false,
+      "is_completed": false,
     };
     const url = "https://api.nstack.in/v1/todos";
     final uri = Uri.parse(url);
