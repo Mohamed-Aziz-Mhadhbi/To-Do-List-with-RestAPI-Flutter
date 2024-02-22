@@ -49,7 +49,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   trailing: PopupMenuButton(
                     onSelected: (value) {
                       if (value == "edit") {
-                        navigateToEditPage();
+                        navigateToEditPage(item);
                       } else if (value == 'delete') {
                         deletebyId(id);
                       }
@@ -75,7 +75,7 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
-  void navigateToEditPage() {
+  void navigateToEditPage(Map items) {
     final route = MaterialPageRoute(
       builder: (context) => const AddTodoPage(),
     );
