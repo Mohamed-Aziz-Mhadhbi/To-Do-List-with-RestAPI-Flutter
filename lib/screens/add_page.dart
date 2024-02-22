@@ -50,7 +50,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(onPressed: submitData, child: const Text("Submit"))
+          ElevatedButton(
+              onPressed: submitData, child: Text(isEdit ? "Edit" : "Submit"))
         ],
       ),
     );
