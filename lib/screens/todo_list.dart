@@ -74,6 +74,13 @@ class _TodoListPageState extends State<TodoListPage> {
     );
   }
 
+  void navigateToEditPage() {
+    final route = MaterialPageRoute(
+      builder: (context) => const AddTodoPage(),
+    );
+    Navigator.push(context, route);
+  }
+
   void navigateToAddPage() {
     final route = MaterialPageRoute(
       builder: (context) => const AddTodoPage(),
@@ -91,7 +98,7 @@ class _TodoListPageState extends State<TodoListPage> {
         items = filtered;
       });
     } else {
-      showErrorMessage("Unable to delete");
+      showErrorMessage("Deletion Failed");
     }
   }
 
